@@ -1,83 +1,11 @@
-# Skin Cancer Classification
+Introduction
+Skin-Cancer-Classification is a project focused on developing a machine learning model for classifying skin cancer types from images of skin lesions. This project utilizes advanced image processing and deep learning techniques to identify and differentiate between benign and malignant skin conditions, aiming to assist in early diagnosis and treatment. It provides a comprehensive solution for researchers and healthcare professionals to enhance skin cancer detection and improve patient outcomes.
 
-Skin cancer is classified by two main types: melanoma and non-melanoma.  Currently, 2-3 million non-melanoma and 132,000 melanoma skin cancers are diagnosed globally each year. The incidence of skin cancer is evident by a statistic based on the World Health Organization (WHO) that states that every 1 in 3 cancers diagnosed is a skin cancer. The increased incidence of skin cancer is attributed to the depleted ozone level and as the atmophosphere loses its protective filter function, an increased amount of solar UV radiation will reach the Earth's surface. Additionally, increased reactreation exposure to the sun and history of sunburn are main factors that predispose an individual to the development of skin cancer. These factors are preventable and each individual is responsible to protect themselves from the sun (i.e., using sunblock). 
-
-## Getting Started
-### Usage Requirements
-
-Install all dependencies using `pip install -r requirements.txt`
-
-We are using `.env` to manage environment variables such as API tokens. Copy `.env.example` as `.env` and fill in the environment variables accordingly.
-
-### Connecting to the Kaggle API
-
-This repo uses the Kaggle API to fetch the dataset. Follow these steps to access the Kaggle API:
-
-1. Create a Kaggle account
-2. Generate an API token from `kaggle.com/USERNAME/account` -- this prompts you to download a `kaggle.json` file which contains the credentials
-3. Populate `.env` file with your Kaggle credentials to set them as your environment variable.
-
-We also use `pre-commit` hooks to keep our code clean. Please enable this using `pre-commit install` prior to making any code changes.
-
-### Model Weights
-
-This repo has pre-trained model weights that are too large to be hosted on GitHub. Follow these steps to download the weights:
-
-1. Move to the `skin_cancer/data/models/` directory. This is where the downloaded file needs to be placed.
-2. In terminal, input the following command `wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1pq4bJobGizZ_b2lbzODXFh9CCTvrZ482' -O weights.h5`
-
-This should download the file which completes the set-up.
-
-### Docker
-To deploy this project, a docker container was used to build, share, and run our application. 
-
-1. Install Docker
-2. Run the dockers container using `docker build . -t skin_cancer`. This will build everything in the repository.
-3. Once the docker container is build run the following command to generate a docker image and the command in the DockerFile will also launch the app: `docker run -i -d -p 8080:5000 skin_cancer`
-
-### FastAPI
-> FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
-> Source: https://fastapi.tiangolo.com/
-
-Therefore, this application was created using FastAPI. In order to deploy using FastAPI and Docker, a routers directory was created. Within the routers directory, a `skin_cancer_router.py` file was created. Within the `skin_cancer` directory, an `app.py` file is needed to define the app and its router.
-
-### Performance Results
-Overall, the test performance of the model is approximatley 90% while the testing of the model yielded 81%.
-
-## The Skin Cancer MNIST:HAM1000 Dataset
-### Skin Lesion Classifications
-
-The dataset includes the following skin lesions:
-
-- Melanocytic nevi (nv) are benign (non-cancerous) neoplasms composed of melanocytes.
-- Melanoma is a type of cancer that develops from melanocytes. It is the most dangerous type of skin cancer and is more common among men than women and high rates are found in Northern Europe and North America in areas mostly populated with white people.
-- Benign keratosis-like lesions are non-cancerous skin growths. They are often found on the back or chest and they grow slowly either in groups or singly. It is very likely that everyone will develop one keratosis-like lesion in their lifetime.
-- Basal cell carcinoma is a type of skin cancer that begins in the basal cells (which produce new skin cells) and occurs frequently in areas exposed to the sun (e.g., head or neck).
-- Actinic keratoses is a non-cancerous rough, scaly patch on your skin that develops from years of exposure to the sun. It's most commonly found on your face, lips, ears, back of your hands, forearms, scalp or neck.
-- Vascular lesions include acquired lesions (eg, pyogenic granuloma) and those that are present at birth or arise shortly after birth (vascular birthmarks).
-- Dermatofibroma is a common cutaneous nodule of unknown etiology that occurs more often in women. It develops frequently in the extremities (i.e., lower legs) and is usually asymptomatic.
-
-
-In total, there are 7 different classifications and of these 7, there are 2 cancerous conditions.
-
-![cancer](https://user-images.githubusercontent.com/44474067/71536906-d89b5580-28e2-11ea-8ba3-24860f49fced.png)
-
-The distributionof the 7 different classifications in the dataset is visualized as follows:
-
-![cancer 5](https://user-images.githubusercontent.com/44474067/71536999-e9000000-28e3-11ea-8a59-32a9152900bd.png)
-
-There is an issue regarding overfitting of Melanocytic nevi, which will be addressed using image augmentation during the model development process. 
-
-### Analysis: Age & Gender
-
-Canadian statistics on melanoma related to melanoma:
-- Women age 49 are more likely to develop melanoma than any other cancer excluding breast and thyroid cancer
-- Men age 49 are more likely to develop melanoma than any other cancer
-- Men >= 50 are more likely to develop melanoma than women
-
-The following is an analysis of the influence of age and gender on melanoma based on this current dataset:
-
-![cancer 4](https://user-images.githubusercontent.com/44474067/71536965-90306780-28e3-11ea-9a28-d01aac4f1de4.png)
-
-As mentioned, women are more likely to develop melanoma age 49 than any other form of cancer (except breast and thryoid). Though there is no comparison to other cancers we can see that women age 40 and lower have a significantly higher chance of developing melanoma. However, after age 50 it is men that have a higher chance of developing melanoma. In fact at certain ages their chance at developing melanoma is nearly double that of women.ollowing exploratory analysis 
-
+Features
+Image Classification: Uses deep learning models to classify skin lesions into different categories, such as benign or malignant, based on visual characteristics.
+Pre-Trained Models: Includes pre-trained models that have been trained on large datasets of skin images to provide accurate classification results.
+Customizable Training: Allows for fine-tuning and retraining of models on specific datasets to adapt to different skin cancer types or regional variations.
+Data Augmentation: Implements techniques for augmenting training data, such as rotation, scaling, and flipping, to improve model robustness and generalization.
+Performance Metrics: Provides evaluation metrics such as accuracy, precision, recall, and F1-score to assess model performance and reliability.
+User-Friendly Interface: Features an intuitive interface for uploading images, running classifications, and viewing results.
+Comprehensive Documentation: Detailed guides and examples for setting up the classification model, training, and deploying the solution in clinical or research settings.
